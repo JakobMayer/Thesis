@@ -204,7 +204,7 @@
 				texture.repeat.set(30, 3); 
 				texture.wrapS = THREE.RepeatWrapping; 
 				texture.wrapT = THREE.RepeatWrapping;
-				var geometry = new THREE.CylinderGeometry(8, 8, 8, 100, 1);
+				var geometry = new THREE.CylinderGeometry(6, 6, 8, 100, 1);
 				var material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.BackSide });
 				var cylinder = new THREE.Mesh(geometry, material);
 				cylinder.position.set(0, 3.5, 0);
