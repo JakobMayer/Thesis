@@ -302,7 +302,7 @@ ion-icon {
 }
 
 #weiter {
-	margin-top: 5%;
+	margin-top: 10%;
 	width: 100px;
 	background-color: black;
 	border: 1px solid black;
@@ -328,4 +328,3 @@ ion-icon {
 #weiter:hover a {
 	color: black;
 }
-
