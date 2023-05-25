@@ -12,33 +12,26 @@
 	</head>
 
 	<body>
-		<button id="motorButton"><ion-icon name="volume-high-outline"></ion-icon></button>
+		<h1 id="myHeading">Ferrari 458 Italia</h1>
+		
+		<button id="motorButton" style="display: none;"><ion-icon name="power-outline"></ion-icon></button>
 
 		<div id="auswahl">
 			<span class="colorPicker"><input id="lack-color" type="color" value="#ff0000"></input><br/>Lack</span>
 			<span class="colorPicker"><input id="glas-color" type="color" value="#ffffff"></input><br/>Glas</span>
 			<span class="colorPicker"><input id="felgen-color" type="color" value="#ffffff"></input><br/>Felgen</span>
 			<span class="colorPicker"><input id="leder-color" type="color" value="#484642"></input><br/>Leder</span>
-			<span class="colorPicker"><input id="armatur-color" type="color" value="#D8D4CF"></input><br/>Armaturen</span>
+			<span class="colorPicker"><input id="armatur-color" type="color" value="#D8D4CF"></input><br/>Amaturen</span>
 			<span class="colorPicker"><input id="naht-color" type="color" value="#990000"></input><br/>Nähte</span>
 			<span class="colorPicker"><input id="lMetall-color" type="color" value="#D8D4CF"></input><br/>Lenkrad-Metall</span>
 			<span class="colorPicker"><input id="lLeder-color" type="color" value="#747070"></input><br/>Lenkrad-Leder</span>
-		</div>
-
-		<div class="ansicht">
-			<a id="außenansicht" href="#">Außenansicht</a>
-			<bold>|</bold>
-			<a id="fahrerperspektive" href="#">Fahrerperspektive</a>
-		</div>
-
-		<button id="kaufen"><a href="#">Kaufen</a></button>
-		<div id="fenster" class="fenster">
-			<span id="nachricht"><h3>Ferrari 458 Italia</h3>Das konfigurierte Auto wurde in den Warenkorb gelegt</span>
-			<br>
-			<button id="schließen">Schließen</button>
-			<button id="zahlen">Zur Kasse</button>
-		</div>
-		<div id="overlay"></div>
+			
+			<div class="ansicht">
+				<a id="außenansicht" href="#">Außenansicht</a>
+				<bold>|</bold>
+				<a id="fahrerperspektive" href="#">Fahrerperspektive</a>
+			</div>
+		</div>		
 
 		<a id="source-link" href="sources.html">Quellen</a>
 
@@ -55,20 +48,20 @@
 
 		<script type="module">
 			var motorButton = document.getElementById('motorButton');
-			var audio = new Audio('Sounds/CD_LAMBORGHINI AVENTADOR START REV IDLE OFF 01_01_24_14.mp3');
+			var audio = new Audio('Sounds/ferrari456startup.mp3');
 			var isMotorRunning = false;
 			motorButton.addEventListener('click', function() {
 
 			if (isMotorRunning) {
 				audio.pause();
 				audio.currentTime = 0;
-				motorButton.innerHTML = '<ion-icon name="volume-high-outline"></ion-icon>';
+				motorButton.innerHTML = '<ion-icon name="power-outline"></ion-icon>';
 				isMotorRunning = false;
 			} else {
 				audio.play();
-				motorButton.style.backgroundColor = 'black';
+				motorButton.style.backgroundColor = 'red';
 				motorButton.style.color = 'white';
-				motorButton.innerHTML = '<ion-icon name="volume-mute-outline"></ion-icon>';
+				motorButton.innerHTML = '<ion-icon name="power-outline"></ion-icon>';
 				isMotorRunning = true;
 			}
 			});
@@ -77,31 +70,12 @@
 				motorButton.style.borderColor = 'black';
 				motorButton.style.backgroundColor = 'white';
 				motorButton.style.color = 'black';
-				motorButton.innerHTML = '<ion-icon name="volume-high-outline"></ion-icon>';
+				motorButton.innerHTML = '<ion-icon name="power-outline"></ion-icon>';
 				isMotorRunning = false;
 			});
 
-			document.getElementById('kaufen').addEventListener('click', function() {
-			document.getElementById('fenster').style.display = 'block';
-			document.getElementById('overlay').style.display = 'block';
-			});
-
-			document.getElementById('schließen').addEventListener('click', function() {
-			document.getElementById('fenster').style.display = 'none';
-			document.getElementById('overlay').style.display = 'none';
-			});
-			document.getElementById('zahlen').addEventListener('click', function() {
-			document.getElementById('fenster').style.display = 'none';
-			document.getElementById('overlay').style.display = 'none';
-			});
-
-
 			import * as THREE from 'three';
-
-			import Stats from 'three/addons/libs/stats.module.js';
-
 			import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-
 			import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 			import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 			import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
@@ -110,7 +84,7 @@
 
 			function init() {
 				scene = new THREE.Scene();
-				scene.background = new THREE.Color( 0xf7f7f7 );
+				scene.background = new THREE.Color( 0xf7f7f7 )
 				
 				scene.environment = new RGBELoader().load( 'Texturen/dancing_hall_2k.hdr' );
 				scene.environment.mapping = THREE.EquirectangularReflectionMapping;
@@ -122,7 +96,7 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				renderer.setAnimationLoop( render );
 				renderer.toneMapping = THREE.ACESFilmicToneMapping;
-				renderer.toneMappingExposure = 0.7;
+				renderer.toneMappingExposure = 0.6;
 				container.appendChild( renderer.domElement );
 
 				window.addEventListener( 'resize', onWindowResize );
@@ -131,16 +105,17 @@
                 camera.position.set(4.2, 1.4, -4.5);
                 controls = new OrbitControls(camera, container);
                 controls.enableDamping = true;
+				controls.dampingFactor = 0.25;
 				controls.minDistance = 2;
                 controls.maxDistance = 8;
-
+				
 				const außenansichtButton = document.getElementById('außenansicht');
                 const fahrerperspektiveButton = document.getElementById('fahrerperspektive');
 				
                 const defaultCameraPosition = new THREE.Vector3(4.2, 1.4, -4.5);
-                const driverCameraPosition = new THREE.Vector3(-0.3, 1.1, 0.35);
-				const defaultCameraOutside = new THREE.Vector3(0, 0.8, 0);
-				const defaultCameraInside = new THREE.Vector3(-0.2, -0.45, -5);
+                const driverCameraPosition = new THREE.Vector3(-0.3, 1.05, 0.35);
+				const defaultCameraOutside = new THREE.Vector3(0, 0.3, 0);
+				const defaultCameraInside = new THREE.Vector3(-0.2, -0.8, -5);
 				controls.target.copy(defaultCameraOutside);
 				außenansichtButton.style.fontWeight = 'bold';
 
@@ -153,6 +128,10 @@
 					controls.target.copy(defaultCameraOutside);
 					außenansichtButton.style.fontWeight = 'bold';
                     fahrerperspektiveButton.style.fontWeight = 'normal';
+
+					document.getElementById("motorButton").style.display = "none";
+					document.getElementById("myHeading").style.display = "block";
+					document.getElementById("source-link").style.color = "black";
                 }
 
                 function switchToFahrerperspektive() {
@@ -161,6 +140,10 @@
 					controls.target.copy(defaultCameraInside);
 					außenansichtButton.style.fontWeight = 'normal';
                     fahrerperspektiveButton.style.fontWeight = 'bold';
+
+					document.getElementById("motorButton").style.display = "block";
+					document.getElementById("myHeading").style.display = "none";
+					document.getElementById("source-link").style.color = "white";
                 }
 
                 controls.maxPolarAngle = Math.PI / 2;
@@ -168,10 +151,11 @@
 
 				// -----------------------------------------------------------------
                 // Raum
-				
+
 				var textureLoader = new THREE.TextureLoader();
-				var texture = textureLoader.load('Texturen/Porcelain001_2K_Roughness.jpg');
-				texture.repeat.set(20, 20); 
+				var texture = textureLoader.load('Texturen/WoodFloor051_2K_Color.jpg');
+				texture.repeat.set(8, 8); 
+				texture.rotation = Math.PI / 2;
 				texture.wrapS = THREE.RepeatWrapping; 
 				texture.wrapT = THREE.RepeatWrapping;
 				var material = new THREE.MeshBasicMaterial({ map: texture,  });
@@ -184,29 +168,44 @@
 				scene.add(floor);
 
 				var textureLoader = new THREE.TextureLoader();
-				var texture = textureLoader.load('Texturen/Marble019_2K_Color.jpg');
-				texture.repeat.set(5, 5); 
+				var texture = textureLoader.load('Texturen/Leather027_2K_Roughness.jpg');
+				texture.repeat.set(3, 3); 
 				texture.wrapS = THREE.RepeatWrapping; 
 				texture.wrapT = THREE.RepeatWrapping;
 				texture.rotation = Math.PI / 2;
 				var materialSides = new THREE.MeshBasicMaterial({  map: texture, });
 				var materialTopBottom = new THREE.MeshBasicMaterial({ color: 0xff0000 });
 				var materials = [materialTopBottom, materialSides];
-				var geometry = new THREE.CylinderGeometry(2.6, 4, 0.4, 100);
+				var geometry = new THREE.CylinderGeometry(2.5, 3.9, 0.4, 100);
 				var cylinder = new THREE.Mesh(geometry, materials);
 				cylinder.position.set(0, -0.2, 0);
 				scene.add(cylinder);
 
 				var textureLoader = new THREE.TextureLoader();
-				var texture = textureLoader.load('Texturen/Marble019_2K_Color.jpg');
-				texture.repeat.set(30, 3); 
+				var texture = textureLoader.load('Texturen/Concrete042A_2K_Displacement.jpg');
+				texture.repeat.set(9, 2); 
 				texture.wrapS = THREE.RepeatWrapping; 
 				texture.wrapT = THREE.RepeatWrapping;
 				var geometry = new THREE.CylinderGeometry(6, 6, 8, 100, 1);
 				var material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.BackSide });
 				var cylinder = new THREE.Mesh(geometry, material);
-				cylinder.position.set(0, 3.5, 0);
+				cylinder.position.set(0, 3, 0);
 				scene.add(cylinder);
+				//color: 0x403b3b
+
+				var textureLoader = new THREE.TextureLoader();
+				var texture = textureLoader.load('Texturen/Leather027_2K_Roughness.jpg');
+				texture.repeat.set(9, 9 ); 
+				texture.wrapS = THREE.RepeatWrapping; 
+				texture.wrapT = THREE.RepeatWrapping;
+				var material = new THREE.MeshBasicMaterial({ map: texture,});
+				var geometry = new THREE.CircleGeometry(1, 100);
+				var decke = new THREE.Mesh(geometry, material);
+				decke.rotation.x = Math.PI * 1 / 2;
+				decke.scale.x = 8;
+				decke.scale.y = 8;
+				decke.position.set(0, 4, 0);
+				scene.add(decke);
 		
 				// -----------------------------------------------------------------
                 // Farben deklarieren
@@ -294,7 +293,7 @@
 				} );
 								
 				// -----------------------------------------------------------------
-				// Auto hinzufügen und gewählte Farben hinzufügen
+				// Auto
 				
 				const shadow = new THREE.TextureLoader().load( 'Ferrari/ferrari_ao.png' );
 
@@ -381,3 +380,4 @@
 
 	</body>
 </html>
+
