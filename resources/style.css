@@ -1,0 +1,224 @@
+body {
+	margin: 0;
+	color: black;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	line-height: 24px;
+	overscroll-behavior: none;
+	text-rendering: optimizeLegibility;
+}
+
+h1 {
+	position: absolute;
+	font-size: 25px;
+	color: black;
+      top: 2%;
+      left: 2%;
+      background-color: rgba(255, 255, 255, 0);
+      padding: 10px;
+}
+
+h2 {
+	font-size:28px
+}
+
+#motorButton {
+	position: fixed;
+	top: 55%;
+	left: 45%;
+	background-color: white;
+	border: 2px solid red;
+	border-radius: 50%;
+	padding: 13px 15px;
+	font-size: 16px;
+	color: black;
+	transition: background-color 0.1s ease-out 0.1s;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.366), 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+.colorPicker {
+	display: inline-block;
+	margin: 0 10px;
+}
+
+.colorPicker input[type="color"] {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+}
+
+#auswahl {
+	position: absolute;
+	bottom: 0%;
+	width: 80%;
+	margin-left: 10%;
+	border-radius: 15px;
+	margin-bottom: 2%;
+	padding: 20px 0 20px 0;
+	box-sizing: border-box;
+	text-align: center;
+	background-color: white;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5), 0px 0px 5px rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+}
+
+.ansicht {
+	margin-left: 5%;
+	border: 1px solid black; 
+	display: flex; 
+	justify-content: center;
+	border-radius: 5px; 
+}
+
+.ansicht a, bold {
+	margin: 0 10px; 
+	padding-top: 15px;
+	padding-bottom: 15px;
+	text-decoration: none;
+	color: black;
+}
+
+.ansicht a:hover {
+	text-decoration: underline;
+	text-shadow: 0px 0px 1px black;
+}
+
+a, button, input, select {
+	pointer-events: auto;
+}
+
+
+#source-link {
+	position: fixed;
+	top: 2%;
+	right: 2%;
+	color: black;
+	text-decoration: underline;
+	transition: color 0.2s;
+}
+
+#source-link:hover {
+	color: rgb(10, 130, 236);
+}
+
+#source-list {
+	width: 80%;
+	max-width: 800px;
+	margin: 5% auto 0 auto;
+	font-size: 14px;
+}
+
+.back-button {
+	background-color: black;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 10px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	transition: background-color 0.1s ease-out;
+}
+
+.back-button a {
+	color: white;
+	text-decoration: none;
+	transition: color 0.1s ease-out;
+}
+
+.back-button:hover {
+	border: 1px solid black;
+	background-color: white;
+}
+
+.back-button:hover a {
+	color: black;
+}
+
+ion-icon {
+	font-size: 20px;
+}
+
+@media all and (max-width: 640px) {
+	.lil-gui.root {
+		right: auto;
+		top: auto;
+		max-height: 50%;
+		max-width: 80%;
+		bottom: 0;
+		left: 0;
+	}
+}
+
+
+
+
+.container {
+	display: flex;
+	align-items: center;
+}
+
+.image-section {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	width:50%;
+}
+
+.image-section img {
+	width: 100vh;
+	height: 100vh;
+	object-fit: cover;
+}
+
+.text-section {
+	flex: 1;
+	margin-left: 5%;
+	padding: 20px;
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+.text-section h1 {
+	font-size: 30px;
+}
+
+.text-section h3 {
+	font-size: 18px;
+}
+
+.text-section p {
+	margin:0;
+	margin-bottom: 1%;
+	font-size: 16px;
+}
+
+#weiter {
+	margin-top: 10%;
+	width: 100px;
+	background-color: black;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 10px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5), 0px 0px 5px rgba(0, 0, 0, 0.3);
+}
+
+#weiter a {
+	text-decoration: none;
+	color: white;
+}
+
+#weiter:hover {
+	border: 1px solid black;
+	background-color: white;
+	color: black;
+}
+
+#weiter:hover a {
+	color: black;
+}
